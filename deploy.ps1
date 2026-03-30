@@ -2,7 +2,7 @@ param(
     [string]$DockerUser,
     [string]$DockerToken
 )
-docker login -u hajardk -p $DockerToken
+docker login -u hajardk -p $DOCKERHUB_TOKEN
 docker stop flask_app -ErrorAction SilentlyContinue
 docker rm flask_app -ErrorAction SilentlyContinue
 docker pull hajardk/flask_devops_demo:latest
