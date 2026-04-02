@@ -24,7 +24,7 @@ jobs:
 
   cd:
     name: Docker build and deploy
-    runs-on: [self-hosted, windows]  # ← Utilise votre runner Windows
+    runs-on: [self-hosted, windows]
     needs: ci
 
     steps:
@@ -46,7 +46,6 @@ jobs:
           docker push hajardk/flask_devops_demo:latest
 
       - name: Deploy (direct execution)
-        shell: pwsh
         run: |
-          # Exécution directe - plus besoin de SSH !
-          C:\Users\HP\Desktop\tpcdssh_\deploy.ps1 -DockerUser "${{ secrets.DOCKERHUB_USERNAME }}" -DockerToken "${{ secrets.DOCKERHUB_TOKEN }}"
+          # Utiliser PowerShell Windows standard
+          powershell -ExecutionPolicy Bypass -Command "& 'C:\Users\HP\Desktop\tpcdssh_\deploy.ps1' -DockerUser '${{ secrets.DOCKERHUB_USERNAME }}' -DockerToken '${{ secrets.DOCKERHUB_TOKEN }}'"
