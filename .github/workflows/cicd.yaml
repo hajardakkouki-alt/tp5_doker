@@ -53,7 +53,6 @@ jobs:
 
           # test connexion SSH
           ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo CONNECTED"
-
           # exécution du script PowerShell sur Windows
           ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} ^
           "powershell -ExecutionPolicy Bypass -File C:\\Users\\HP\\Desktop\\tpcdssh_\\deploy.ps1 -DockerUser '${{ secrets.DOCKERHUB_USERNAME }}' -DockerToken '${{ secrets.DOCKERHUB_TOKEN }}'"
